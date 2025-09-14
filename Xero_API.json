@@ -1,0 +1,219 @@
+[
+    {
+        "endpoint": "Accounts",
+        "fields": [
+            "AccountID", "Name", "Status", "Type", "TaxType", "Class", "EnablePaymentsToAccount", "ShowInExpenseClaims", "BankAccountNumber", "BankAccountType", "CurrencyCode", 
+            "ReportingCode", "ReportingCodeName", "HasAttachments", "UpdatedDateUTC", "AddToWatchlist"
+        ],
+        "date_fields": ["UpdatedDateUTC"]
+    },
+    {
+        "endpoint": "BankTransactions",
+        "paged": true,
+        "fields": [
+            "BankTransactionID", "BankAccount_AccountID", "BankAccount_Code", "BankAccount_Name", "Type", "Reference", "IsReconciled", "HasAttachments", "Contact_ContactID", 
+            "Contact_Name", "Contact_HasValidationErrors", "Date", "Status", "LineAmountTypes", "SubTotal", "TotalTax", "Total", "UpdatedDateUTC", "CurrencyCode"
+        ],
+        "date_fields": ["Date", "UpdatedDateUTC"],
+        "nested": [
+            {
+            "nest": "LineItems",
+            "fields": ["BankTransactionID", "Description", "UnitAmount", "TaxType", "TaxAmount", "LineAmount", "AccountCode", "Quantity", "LineItemID", "AccountID"]
+            }
+        ]
+    },
+    {
+        "endpoint": "BankTransfers",
+        "fields": [
+            "BankTransferID", "CreatedDateUTC", "Date", "FromBankAccount_AccountID", "FromBankAccount_Code", "FromBankAccount_Name", "ToBankAccount_AccountID", "ToBankAccount_Code", 
+            "ToBankAccount_Name", "Amount", "FromBankTransactionID", "ToBankTransactionID", "FromIsReconciled", "ToIsReconciled", "CurrencyRate", "Reference", "HasAttachments"
+        ],
+        "date_fields": ["CreatedDateUTC",  "Date"]
+    },
+    {
+        "endpoint": "BatchPayments",
+        "fields": [
+            "BatchPaymentID", "Account_AccountID", "Account_CurrencyCode", "Details", "Date", "Type", "Status", "TotalAmount", "UpdatedDateUTC", "IsReconciled", "ReconciledStatementLineId"
+        ],
+        "date_fields": ["Date", "UpdatedDateUTC"],
+        "nested": [
+            {
+            "nest": "Payments",
+            "fields": ["BatchPaymentID", "Invoice_InvoiceID", "Invoice_IsDiscounted", "Invoice_HasErrors", "Invoice_CurrencyCode", "PaymentID", "Amount", "BankAmount"]
+            }
+        ]
+    },
+    {
+        "endpoint": "ContactGroups",
+        "fields": [
+            "ContactGroupID", "Name", "Status", "HasValidationErrors"
+        ]
+    },
+    {
+        "endpoint": "Items",
+        "fields": [
+            "ItemID", "Code", "Description", "UpdatedDateUTC", "PurchaseDetails_UnitPrice", "PurchaseDetails_AccountCode", "PurchaseDetails_TaxType", "SalesDetails_UnitPrice", 
+            "SalesDetails_AccountCode", "SalesDetails_TaxType", "Name", "IsTrackedAsInventory", "IsSold", "IsPurchased"
+        ],
+        "date_fields": ["UpdatedDateUTC"]
+    },
+    {
+        "endpoint": "Journals",
+        "fields": [
+            "JournalID", "JournalDate", "JournalNumber", "CreatedDateUTC", "Reference", "SourceID", "SourceType"
+        ],
+        "date_fields": ["JournalDate", "CreatedDateUTC"],
+        "nested": [
+            {
+            "nest": "JournalLines",
+            "fields": ["JournalLineID", "AccountID", "AccountCode", "AccountType", "AccountName", "Description", "NetAmount", "GrossAmount", "TaxAmount", "TaxType", "TaxName"]
+            }
+        ]
+    },
+    {
+        "endpoint": "Contacts",
+        "paged": true,
+        "fields": [
+            "ContactID", "ContactNumber", "ContactStatus", "Name", "FirstName", "LastName", "EmailAddress", "BankAccountDetails", "TaxNumber", "AccountsPayableTaxType", 
+            "UpdatedDateUTC", "IsSupplier", "IsCustomer", "DefaultCurrency", "HasAttachments", "HasValidationErrors"
+        ],
+        "date_fields": ["UpdatedDateUTC"]
+    },
+    {
+        "endpoint": "CreditNotes",
+        "paged": true,
+        "fields": [
+           "CreditNoteID", "CreditNoteNumber", "ID", "HasErrors", "CurrencyRate", "Type", "Reference", "RemainingCredit", "HasAttachments", "Contact_ContactID", 
+           "Contact_ContactNumber", "Contact_Name", "Contact_HasValidationErrors", "Date", "BrandingThemeID", "Status", "LineAmountTypes", "SubTotal", "TotalTax", "Total", 
+           "UpdatedDateUTC", "CurrencyCode", "FullyPaidOnDate"
+        ],
+        "date_fields": ["Date", "UpdatedDateUTC", "FullyPaidOnDate"],
+        "nested": [
+            {
+            "nest": "Allocations",
+            "fields": ["CreditNoteID", "AllocationID", "Amount", "Date", "Invoice_InvoiceID", "Invoice_InvoiceNumber", "Invoice_IsDiscounted", "Invoice_HasErrors"],
+            "date_fields": ["Date"]
+            },
+            {
+            "nest": "LineItems",
+            "fields": ["CreditNoteID", "ItemCode", "Description", "UnitAmount", "TaxType", "TaxAmount", "LineAmount", "AccountCode", "Item_ItemID", "Item_Name", "Item_Code", 
+            "Quantity", "LineItemID", "AccountID"]
+            }
+        ]
+    },
+    {
+        "endpoint": "Invoices",
+        "paged": true,
+        "fields": [
+           "InvoiceID", "Type", "InvoiceNumber", "Reference", "AmountDue", "AmountPaid", "AmountCredited", "Url", "SentToContact", "CurrencyRate", "IsDiscounted", "HasAttachments", 
+           "HasErrors", "Contact_ContactID", "Contact_ContactNumber", "Contact_Name", "Contact_HasValidationErrors", "Date", "DueDate", "BrandingThemeID", "Status", "LineAmountTypes",
+           "SubTotal", "TotalTax", "Total", "UpdatedDateUTC", "CurrencyCode"
+        ],
+        "date_fields": ["Date", "DueDate", "UpdatedDateUTC"],
+        "nested": [
+            {
+            "nest": "LineItems",
+            "fields": ["InvoiceID", "ItemCode", "Description", "UnitAmount", "TaxType", "TaxAmount", "LineAmount", "AccountCode", "ItemID", "Name", "Code", "Quantity", "LineItemID", 
+            "AccountID"]
+            }
+        ]
+    },
+    {
+        "endpoint": "LinkedTransactions",
+        "fields": [
+            "LinkedTransactionID", "SourceTransactionID", "SourceLineItemID", "ContactID", "Status", "Type", "UpdatedDateUTC", "SourceTransactionTypeCode"
+        ],
+        "date_fields": ["UpdatedDateUTC"]
+    },
+    {
+        "endpoint": "ManualJournals",
+        "paged": true,
+        "fields": [
+           "ManualJournalID", "Date", "Status", "LineAmountTypes", "UpdatedDateUTC", "Narration", "ShowOnCashBasisReports", "HasAttachments"
+        ],
+        "date_fields": ["Date", "UpdatedDateUTC"],
+        "nested": [
+            {
+            "nest": "JournalLines",
+            "fields": ["ManualJournalID", "Description", "TaxType", "TaxAmount", "LineAmount", "AccountCode", "AccountID", "IsBlank"]
+            }
+        ]
+    },
+    {
+        "endpoint": "Overpayments",
+        "paged": true,
+        "fields": [
+           "OverpaymentID", "Type", "RemainingCredit", "HasAttachments", "Contact_ContactID", "Contact_ContactNumber", "Contact_Name", "Contact_HasValidationErrors", "Date", 
+           "Status", "LineAmountTypes", "SubTotal", "TotalTax", "Total", "UpdatedDateUTC", "CurrencyCode"
+        ],
+        "date_fields": ["Date", "UpdatedDateUTC"],
+        "nested": [
+            {
+            "nest": "Allocations",
+            "fields": ["OverpaymentID", "AllocationID", "Amount", "Date", "Invoice_InvoiceID", "Invoice_InvoiceNumber", "Invoice_HasErrors"],
+            "date_fields": ["Date"]
+            },
+            {
+            "nest": "LineItems",
+            "fields": ["OverpaymentID", "Description", "UnitAmount", "TaxType", "TaxAmount", "LineAmount", "AccountCode", "Quantity", "LineItemID", "AccountID"]
+            }
+        ]
+    },
+    {
+        "endpoint": "Prepayments",
+        "paged": true,
+        "fields": [
+           "PrepaymentID", "Type", "RemainingCredit", "HasAttachments", "Contact_ContactID", "Contact_ContactNumber", "Contact_Name", "Contact_HasValidationErrors", "Date", 
+           "Status", "LineAmountTypes", "SubTotal", "TotalTax", "Total", "UpdatedDateUTC", "CurrencyCode"
+        ],
+        "date_fields": ["Date", "UpdatedDateUTC"],
+        "nested": [
+            {
+            "nest": "LineItems",
+            "fields": ["PrepaymentID", "Description", "UnitAmount", "TaxType", "TaxAmount", "LineAmount", "AccountCode", "Quantity", "LineItemID", "AccountID"]
+            }
+        ]
+    },
+    {
+        "endpoint": "PurchaseOrders",
+        "paged": true,
+        "fields": [
+           "PurchaseOrderID", "PurchaseOrderNumber", "Date", "DeliveryAddress", "AttentionTo", "Telephone", "DeliveryInstructions", "HasErrors", "IsDiscounted", "SentToContact", 
+           "Reference", "Type", "CurrencyRate", "CurrencyCode", "Contact_ContactID", "Contact_ContactNumber", "Contact_ContactStatus", "Contact_Name", "Contact_FirstName", 
+           "Contact_LastName", "Contact_UpdatedDateUTC", "Contact_DefaultCurrency", "Contact_HasValidationErrors", "BrandingThemeID", "Status", "LineAmountTypes", "SubTotal", 
+           "TotalTax", "Total", "UpdatedDateUTC", "HasAttachments"
+        ],
+        "date_fields": ["Date", "Contact_UpdatedDateUTC", "UpdatedDateUTC"],
+        "nested": [
+            {
+            "nest": "LineItems",
+            "fields": ["PurchaseOrderID", "Description", "UnitAmount", "TaxType", "TaxAmount", "LineAmount", "AccountCode", "Quantity", "LineItemID"]
+            }
+        ]
+    },
+    {
+        "endpoint": "Quotes",
+        "fields": [
+           "QuoteID", "QuoteNumber", "Reference", "Contact_ContactID", "Contact_Name", "Contact_EmailAddress", "Contact_FirstName", "Contact_LastName", "Date", "ExpiryDate", 
+           "Status", "CurrencyRate", "CurrencyCode", "SubTotal", "TotalTax", "Total", "TotalDiscount", "Title", "BrandingThemeID", "UpdatedDateUTC", "LineAmountTypes"
+        ],
+        "date_fields": ["Date", "ExpiryDate", "UpdatedDateUTC"],
+        "nested": [
+            {
+            "nest": "LineItems",
+            "fields": ["QuoteID", "LineItemID", "AccountCode", "Description", "UnitAmount", "DiscountAmount", "LineAmount", "Quantity", "TaxAmount", "TaxType"]
+            }
+        ]
+    },
+        {
+        "endpoint": "Payments",
+        "fields": [
+           "PaymentID", "BatchPaymentID", "BatchPayment_Account_AccountID", "BatchPayment_BatchPaymentID", "BatchPayment_Date", "BatchPayment_Type", "BatchPayment_Status", 
+           "BatchPayment_TotalAmount", "BatchPayment_UpdatedDateUTC", "BatchPayment_IsReconciled", "Date", "BankAmount", "Amount", "Reference", "CurrencyRate", "PaymentType", 
+           "Status", "UpdatedDateUTC", "HasAccount", "IsReconciled", "Account_AccountID", "Account_Code", "Type", "Invoice_InvoiceID", "Invoice_InvoiceNumber", "Invoice_IsDiscounted", 
+           "Invoice_HasErrors", "Invoice_Contact_ContactID", "Invoice_Contact_ContactNumber", "Invoice_Contact_Name", "Invoice_Contact_HasValidationErrors", "Invoice_CurrencyCode", 
+           "HasValidationErrors"
+        ],
+        "date_fields": ["BatchPayment_Date", "BatchPayment_UpdatedDateUTC", "Date", "UpdatedDateUTC"]
+    }
+]

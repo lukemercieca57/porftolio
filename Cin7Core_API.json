@@ -1,0 +1,492 @@
+[
+    {
+    "endpoint": "ref/location", 
+    "list_field": "LocationList",
+    "table": "Location", 
+    "fields": [
+        "ID", "Name", "IsDefault", "IsDeprecated", "ParentID", "FixedAssetsLocation", "AddressLine1", "AddressLine2", "AddressCitySuburb", "AddressStateProvince", "AddressZipPostCode", 
+        "AddressCountry", "PickZones", "IsCoMan", "IsShopFloor", "IsStaging"
+        ],
+    "staging": true
+    },
+    {
+    "endpoint": "Customer", 
+    "list_field": "CustomerList",
+    "params": {"ModifiedSince": "__DATE__", "IncludeDeprecated": true}, 
+    "table": "Customer", 
+    "fields": [
+        "ID", "Name", "Currency", "PaymentTerm", "Discount", "TaxRule", "Carrier", "SalesRepresentative", "Location", "AccountReceivable", "RevenueAccount", "PriceTier", "TaxNumber", 
+        "AdditionalAttribute1", "AdditionalAttribute2", "AdditionalAttribute3", "AdditionalAttribute4", "AdditionalAttribute5", "AdditionalAttribute6", "AdditionalAttribute7", 
+        "AdditionalAttribute8", "AdditionalAttribute9", "AdditionalAttribute10", "AttributeSet", "Tags", "Status", "CreditLimit", "IsOnCreditHold", "LastModifiedOn"
+        ],
+    "date_fields": ["LastModifiedOn"],
+    "staging": true
+    },
+    {
+    "endpoint": "Supplier", 
+    "list_field": "SupplierList", 
+    "params": {"ModifiedSince": "__DATE__", "IncludeDeprecated": true}, 
+    "table": "Supplier", 
+    "fields": [
+        "ID", "Name", "Currency", "PaymentTerm", "TaxRule", "Discount", "AccountPayable", "TaxNumber", "AdditionalAttribute1", "AdditionalAttribute2", "AdditionalAttribute3", 
+        "AdditionalAttribute4", "AdditionalAttribute5", "AdditionalAttribute6", "AdditionalAttribute7", "AdditionalAttribute8", "AdditionalAttribute9", "AdditionalAttribute10", 
+        "AttributeSet", "Status", "LastModifiedOn"
+        ],
+    "date_fields": ["LastModifiedOn"],
+    "staging": true
+    },
+    {
+    "endpoint": "saleList", 
+    "list_field": "SaleList", 
+    "params": {"UpdatedSince": "__DATE__"}, 
+    "table": "SaleList", 
+    "fields": [
+        "SaleID", "OrderNumber", "Status", "OrderDate", "InvoiceDate", "Customer", "CustomerID", "InvoiceNumber", "CustomerReference", "InvoiceAmount", "PaidAmount", "InvoiceDueDate", 
+        "ShipBy", "BaseCurrency", "CustomerCurrency", "CreditNoteNumber", "Updated", "QuoteStatus", "OrderStatus", "CombinedPickingStatus", "CombinedPaymentStatus", "CombinedTrackingNumbers", 
+        "CombinedPackingStatus", "CombinedShippingStatus", "CombinedInvoiceStatus", "CreditNoteStatus", "FulFilmentStatus", "Type", "SourceChannel", "ExternalID", "OrderLocationID", 
+        "RestockStatus"
+        ],
+    "date_fields": ["OrderDate", "InvoiceDate", "InvoiceDueDate", "ShipBy", "Updated"],
+    "staging": true
+    },
+    {
+    "endpoint": "saleCreditNoteList", 
+    "list_field": "SaleList", 
+    "params": {"UpdatedSince": "__DATE__"}, 
+    "table": "SaleCreditNoteList", 
+    "fields": [
+        "SaleID", "OrderNumber", "Status", "OrderDate", "InvoiceDate", "Customer", "CustomerID", "InvoiceNumber", "CustomerReference", "InvoiceAmount", "PaidAmount", "InvoiceDueDate", 
+        "ShipBy", "BaseCurrency", "CustomerCurrency", "CreditNoteNumber", "Updated", "QuoteStatus", "OrderStatus", "CombinedPickingStatus", "CombinedPaymentStatus", "CombinedTrackingNumbers", 
+        "CombinedPackingStatus", "CombinedShippingStatus", "CombinedInvoiceStatus", "CreditNoteStatus", "FulFilmentStatus", "Type", "SourceChannel", "ExternalID", "OrderLocationID", 
+        "RestockStatus"
+        ],
+    "date_fields": ["OrderDate", "InvoiceDate", "InvoiceDueDate", "ShipBy", "Updated"],
+    "staging": true
+    },
+    {
+    "endpoint": "purchaseList", 
+    "list_field": "PurchaseList", 
+    "params": {"UpdatedSince": "__DATE__"}, 
+    "table": "PurchaseList", 
+    "fields": [
+        "ID", "BlindReceipt", "OrderNumber", "Status", "OrderDate", "InvoiceDate", "Supplier", "SupplierID", "InvoiceNumber", "InvoiceAmount", "PaidAmount", "InvoiceDueDate", "RequiredBy", 
+        "BaseCurrency", "SupplierCurrency", "CreditNoteNumber", "OrderStatus", "StockReceivedStatus", "UnstockStatus", "InvoiceStatus", "CreditNoteStatus", "LastUpdatedDate", "Type", 
+        "CombinedInvoiceStatus", "CombinedPaymentStatus", "CombinedReceivingStatus", "IsServiceOnly", "DropShipTaskID"
+        ],
+    "date_fields": ["OrderDate", "InvoiceDate", "InvoiceDueDate", "RequiredBy", "LastUpdatedDate"],
+    "staging": true
+    },
+    {
+    "endpoint": "purchaseCreditNoteList", 
+    "list_field": "PurchaseList", 
+    "params": {"UpdatedSince": "__DATE__"}, 
+    "table": "PurchaseCreditNoteList", 
+    "fields": [
+        "ID", "BlindReceipt", "OrderNumber", "Status", "OrderDate", "InvoiceDate", "Supplier", "SupplierID", "InvoiceNumber", "InvoiceAmount", "PaidAmount", "InvoiceDueDate", "RequiredBy", 
+        "BaseCurrency", "SupplierCurrency", "CreditNoteNumber", "OrderStatus", "StockReceivedStatus", "UnstockStatus", "InvoiceStatus", "CreditNoteStatus", "LastUpdatedDate", "Type", 
+        "CombinedInvoiceStatus", "CombinedPaymentStatus", "CombinedReceivingStatus", "IsServiceOnly", "DropShipTaskID"
+        ],
+    "date_fields": ["OrderDate", "InvoiceDate", "InvoiceDueDate", "RequiredBy", "LastUpdatedDate"],
+    "staging": true
+    },
+    {
+    "endpoint": "product", 
+    "list_field": "Products",
+    "params": {"ModifiedSince": "__DATE__", "IncludeDeprecated": true, "IncludeBOM": true, "IncludeSuppliers": true, "IncludeMovements": true, "IncludeCustomPrices": true}, 
+    "table": "Products", 
+    "fields": [
+        "ID", "SKU", "Name", "Category", "Brand", "Type", "CostingMethod", "DropShipMode", "DefaultLocation", "Length", "Width", "Height", "Weight", "UOM", "WeightUnits", "DimensionsUnits", 
+        "Barcode", "MinimumBeforeReorder", "ReorderQuantity", "PriceTier1", "PriceTier2", "PriceTier3", "PriceTier4", "PriceTier5", "PriceTier6", "PriceTier7", "PriceTier8", "PriceTier9", 
+        "PriceTier10", "AverageCost", "ShortDescription", "InternalNote", "Description", "AdditionalAttribute1", "AdditionalAttribute2", "AdditionalAttribute3", "AdditionalAttribute4", 
+        "AdditionalAttribute5", "AdditionalAttribute6", "AdditionalAttribute7", "AdditionalAttribute8", "AdditionalAttribute9", "AdditionalAttribute10", "AttributeSet", "DiscountRule", 
+        "Tags", "Status", "StockLocator", "COGSAccount", "RevenueAccount", "ExpenseAccount", "InventoryAccount", "PurchaseTaxRule", "SaleTaxRule", "LastModifiedOn", "Sellable", "PickZones", 
+        "BillOfMaterial", "AutoAssembly", "AutoDisassembly", "QuantityToProduce", "AlwaysShowQuantity", "AssemblyInstructionURL", "AssemblyCostEstimationMethod", "BOMType", "WarrantyName", 
+        "CartonHeight", "CartonWidth", "CartonLength", "CartonQuantity", "CartonInnerQuantity", "HSCode", "CountryOfOrigin", "CountryOfOriginCode"
+    ],
+    "date_fields": ["LastModifiedOn"],
+    "staging": true,
+    "nested": [
+        {
+        "nest": "BillOfMaterialsProducts", 
+        "table": "BOMProducts", 
+        "fields": [
+            "ID", "ComponentProductID", "ProductCode", "Name", "Quantity", "WastagePercent", "WastageQuantity", "CostPercentage"
+            ]
+        },
+        {
+        "nest": "BillOfMaterialsServices", 
+        "table": "BOMServices", 
+        "fields": [
+            "ID", "ComponentProductID", "Name", "Quantity", "ExpenseAccount", "PriceTier"
+            ]
+        },
+        {
+        "nest": "Movements", 
+        "table": "StockMovements", 
+        "fields": [
+            "ID", "TaskID", "Type", "Date", "Number", "Quantity", "Amount", "Location", "BatchSN", "ExpiryDate", "FromTo"
+            ],
+        "date_fields": ["Date", "ExpiryDate"]
+        },
+        {
+        "nest": "Suppliers", 
+        "table": "ProductSuppliers", 
+        "fields": [
+            "ID", "ProductSupplierID", "SupplierID", "SupplierName", "Cost", "FixedCost", "SupplierInventoryCode", "SupplierProductName", "SupplierProductURL", "DropShip", 
+            "Currency", "PurchaseCost", "LastSupplied"
+            ],
+        "date_fields": ["LastSupplied"]
+        },
+        {
+        "nest": "CustomPrices", 
+        "table": "CustomPrices", 
+        "fields": [
+            "ID", "CustomerID", "CustomerName", "CustomerCurrency", "Price"
+            ]
+        }
+    ]
+    },
+    {
+    "endpoint": "productFamily", 
+    "list_field": "ProductFamilies",
+    "params": {"ModifiedSince": "__DATE__"}, 
+    "table": "ProductFamily", 
+    "fields": [
+        "ID", "SKU", "Name", "Category", "DefaultLocation", "Brand", "CostingMethod", "UOM", "MinimumBeforeReorder", "ReorderQuantity", "PriceTier1", "PriceTier2", "PriceTier3",
+        "PriceTier4", "PriceTier5", "PriceTier6", "PriceTier7", "PriceTier8", "PriceTier9", "PriceTier10", "ShortDescription", "Description", "AttributeSet", "DiscountRule", "Tags",
+        "COGSAccount", "RevenueAccount", "InventoryAccount", "PurchaseTaxRule", "SaleTaxRule", "DropShipMode", "Option1Name", "Option2Name", "Option3Name", "Option1Values",
+        "Option2Values", "LastModifiedOn", "WarrantyName", "HSCode", "CountryOfOrigin", "CountryOfOriginCode"
+    ],
+    "date_fields": ["LastModifiedOn"],
+    "staging": true,
+    "nested": [
+        {
+        "nest": "Products", 
+        "table": "ProductFamilyID", 
+        "fields": [
+            "FamilyID", "ID", "SKU", "Name", "Option1", "Option2", "Option3"
+            ]
+        }    
+    ]
+    },
+    {
+    "endpoint": "ref/productavailability", 
+    "list_field": "ProductAvailabilityList", 
+    "table": "ProductAvailability", 
+    "fields": [
+        "ID", "SKU", "Name", "Barcode", "Location", "Bin", "Batch", "ExpiryDate", "OnHand", "Allocated", "Available", "OnOrder", "StockOnHand", "InTransit", "NextDeliveryDate"
+        ],
+    "date_fields": ["ExpiryDate", "NextDeliveryDate"]
+    },
+    {
+    "endpoint": "finishedGoodsList", 
+    "list_field": "FinishedGoods",
+    "table": "FinishedGoodsList", 
+    "fields": [
+        "TaskID", "AssemblyNumber", "BatchSN", "ExpiryDate", "ProductID", "ProductCode", "ProductName", "Quantity", "LocationID", "Location", "Date", "Status", "UnitCost"
+        ],
+    "date_fields": ["ExpiryDate", "Date"],
+    "staging": true
+    },
+    {
+    "endpoint": "disassemblyList", 
+    "list_field": "Disassemblies",
+    "table": "DisassemblyList", 
+    "fields": [
+        "TaskID", "DisassemblyNumber", "ProductID", "ProductCode", "ProductName", "Quantity", "LocationID", "Location", "Date", "Status"
+        ],
+    "date_fields": ["Date"],
+    "staging": true
+    },
+    {
+    "endpoint": "stockTransferList", 
+    "list_field": "StockTransferList",
+    "table": "StockTransferList", 
+    "fields": [
+        "TaskID", "FromID", "FromLocation", "ToID", "ToLocation", "Status", "Number", "CompletionDate", "DepartureDate", "InTransitAccount", "CostDistributionType", "Reference", "SkipOrder"
+        ],
+    "date_fields": ["CompletionDate", "DepartureDate"],
+    "staging": true
+    },
+    {
+    "endpoint": "stockadjustmentList", 
+    "list_field": "StockAdjustmentList",
+    "table": "StockAdjustmentList", 
+    "fields": [
+        "TaskID", "EffectiveDate", "StocktakeNumber", "Status", "Account", "Reference"
+        ],
+    "date_fields": ["EffectiveDate"],
+    "staging": true
+    },
+    {
+    "endpoint": "inventoryWriteOffList", 
+    "list_field": "InventoryWriteOffs",
+    "table": "InventoryWriteOffList", 
+    "fields": [
+        "TaskID", "InventoryWriteOffNumber", "Status", "LocationID", "Location", "Date", "Notes"
+        ],
+    "date_fields": ["Date"],
+    "staging": true
+    },
+    {
+    "endpoint": "stockTakeList", 
+    "list_field": "StockAdjustmentList",
+    "table": "StockTakeList", 
+    "fields": [
+        "TaskID", "EffectiveDate", "StocktakeNumber", "Status", "Account", "LocationID", "Location", "Tags", "PickZones", "StockLocators", "Categories", "Brands", "Bins", "Reference", "CreatedDate", 
+        "LastUpdatedDate", "LastUpdatedBy"
+        ],
+    "date_fields": ["EffectiveDate", "CreatedDate", "LastUpdatedDate"],
+    "staging": true
+    },
+    {
+    "endpoint": "transactions", 
+    "list_field": "Transactions",
+    "params": {"FromDate": "__DATE__"},
+    "table": "Transactions", 
+    "fields": [
+       "ID", "TaskID", "DebitAccountCode", "CreditAccountCode", "Amount", "OriginalAmount", "CurrencyRate", "EffectiveDate", "Reference", "Transaction", "Type"
+        ],
+    "date_fields": ["EffectiveDate"],
+    "mod_fields": {"Transaction": "Description"},
+    "staging": true,
+    "fom_date": true
+    },
+    {
+    "endpoint": "sale", 
+    "endpoint_id": "saleList",
+    "list_field": "SaleList",
+    "params": {"UpdatedSince": "__DATE__"},
+    "params_record": {"CombineAdditionalCharges": "true"},
+    "list_id": "SaleID",
+    "id_field": "ID",
+    "nested": [
+        {
+            "nest": "Order",
+            "nest2": "Lines",
+            "table": "SaleOrderLines",
+            "backup": true,
+            "fields": [
+                "ID", "SaleOrderNumber", "Status", "ProductID", "SKU", "Name", "Quantity", "Price", "Discount", "Tax", "AverageCost", "TaxRule", "Comment", "DropShip", 
+                "BackorderQuantity", "Total"
+                ],
+            "nest2_fields": ["ProductID", "SKU", "Name", "Quantity", "Price", "Discount", "Tax", "AverageCost", "TaxRule", "Comment", "DropShip", "BackorderQuantity", "Total"]      
+        },
+        {
+            "nest": "Fulfilments",
+            "nest2": "Pack",
+            "nest3": "Lines",
+            "table": "SaleFulfilments",
+            "fields": [
+                "ID", "TaskID", "FulfillmentNumber", "LinkedInvoiceNumber", "FulFilmentStatus", "Status", "ProductID", "SKU", "Name", "Location", "LocationID", "Box", 
+                "Quantity", "BatchSN", "ExpiryDate"
+                ],
+            "nest2_fields": ["Status"],
+            "nest3_fields": ["ProductID", "SKU", "Name", "Location", "LocationID", "Box", "Quantity", "BatchSN", "ExpiryDate"],
+            "date_fields": ["ExpiryDate"]       
+        },
+        {
+            "nest": "Fulfilments",
+            "nest2": "Pick",
+            "nest3": "Lines",
+            "table": "SaleFulfilmentsPick",
+            "fields": [
+                "ID", "TaskID", "FulfillmentNumber", "LinkedInvoiceNumber", "FulFilmentStatus", "Status", "ProductID", "SKU", "Name", "Location", "LocationID", "Box", 
+                "Quantity", "BatchSN", "ExpiryDate"
+                ],
+            "nest2_fields": ["Status"],
+            "nest3_fields": ["ProductID", "SKU", "Name", "Location", "LocationID", "Box", "Quantity", "BatchSN", "ExpiryDate"],
+            "date_fields": ["ExpiryDate"]       
+        },
+        {
+            "nest": "Fulfilments",
+            "nest2": "Ship",
+            "nest3": "Lines",
+            "table": "SaleShipments",
+            "fields": [
+                "ID", "TaskID", "Status", "RequireBy", "ShipmentID", "ShipmentDate", "Carrier", "Boxes", "TrackingNumber", "TrackingURL", "IsShipped"
+                ],
+            "nest2_fields": ["Status", "RequireBy"],
+            "nest3_fields": ["ShipmentID", "ShipmentDate", "Carrier", "Boxes", "TrackingNumber", "TrackingURL", "IsShipped"],
+            "date_fields": ["RequireBy", "ShipmentDate"]       
+        },
+        {
+            "nest": "Invoices",
+            "nest2": "Lines",
+            "table": "SaleInvoices",
+            "fields": [
+                "ID", "TaskID", "InvoiceNumber", "Status", "InvoiceDate", "InvoiceDueDate", "CurrencyConversionRate", "LinkedFulfillmentNumber", "ProductID", "SKU", "Name", 
+                "Quantity", "Price", "Discount", "Tax", "Total", "AverageCost", "TaxRule", "Account", "Comment"
+                ],
+            "nest2_fields": ["ProductID", "SKU", "Name", "Quantity", "Price", "Discount", "Tax", "Total", "AverageCost", "TaxRule", "Account", "Comment"],
+            "date_fields": ["InvoiceDate", "InvoiceDueDate"]
+        },
+        {
+            "nest": "AdditionalAttributes",
+            "table": "SaleCaseData",
+            "fields": [
+                "ID", "AdditionalAttribute1", "AdditionalAttribute2", "AdditionalAttribute3", "AdditionalAttribute4", "AdditionalAttribute5", "AdditionalAttribute6", 
+                "AdditionalAttribute7", "AdditionalAttribute8"
+                ],
+            "date_fields": ["AdditionalAttribute3", "AdditionalAttribute5"]
+        },
+        {
+            "nest": "Attachments",
+            "table": "SaleAttachments",
+            "fields": [
+                "ID", "AttachmentID", "ContentType", "FileName", "DownloadUrl"
+                ],
+            "mod_fields": {"ID": "AttachmentID"}
+        },
+        {
+            "nest": "InventoryMovements",
+            "table": "SaleCogs",
+            "fields": [
+                "ID", "TaskID", "ProductID", "Date", "COGS"
+                ],
+            "date_fields": ["Date"]
+        }
+    ]
+    },
+    {
+    "endpoint": "sale/creditnote", 
+    "endpoint_id": "saleCreditNoteList",
+    "list_field": "SaleList",
+    "params": {"UpdatedSince": "__DATE__"},
+    "params_record": {"CombineAdditionalCharges": "true"},
+    "list_id": "SaleID",
+    "id_field": "SaleID",
+    "nested": [
+        {
+            "nest": "CreditNotes",
+            "nest2": "Lines",
+            "table": "SaleCreditNotes",
+            "fields": [
+                "SaleID", "TaskID", "CreditNoteInvoiceNumber", "Status", "CreditNoteDate", "CreditNoteNumber", "CreditNoteConversionRate", "ProductID", "SKU", "Name", "Quantity", 
+                "Price", "Discount", "Tax", "Total", "AverageCost", "TaxRule", "Account", "Comment"
+                ],
+            "nest2_fields": ["ProductID", "SKU", "Name", "Quantity", "Price", "Discount", "Tax", "Total", "AverageCost", "TaxRule", "Account", "Comment"],
+            "date_fields": ["CreditNoteDate"]       
+        },
+        {
+            "nest": "CreditNotes",
+            "nest2": "Restock",
+            "table": "SaleRestock",
+            "fields": [
+                "SaleID", "TaskID", "RestockStatus", "ProductID", "SKU", "Name", "Location", "LocationID", "Quantity", "BatchSN", "ExpiryDate", "RestockDate", "RestockLocationID", 
+                "RestockLocation"
+                ],
+            "nest2_fields": ["ProductID", "SKU", "Name", "Location", "LocationID", "Quantity", "BatchSN", "ExpiryDate", "RestockDate", "RestockLocationID", "RestockLocation"],
+            "date_fields": ["ExpiryDate", "RestockDate"]       
+        }
+    ]
+    },
+    {
+    "endpoint": "advanced-purchase", 
+    "endpoint_id": "purchaseList",
+    "list_field": "PurchaseList",
+    "params": {"UpdatedSince": "__DATE__"},
+    "params_record": {"CombineAdditionalCharges": "true"},
+    "list_id": "ID",
+    "id_field": "ID",
+    "nested": [
+        {
+            "nest": "Order",
+            "nest2": "Lines",
+            "table": "PurchaseOrderLines",
+            "backup": true,
+            "fields": [
+                "ID", "Status", "ProductID", "SKU", "Name", "Quantity", "Price", "Discount", "Tax", "TaxRule", "SupplierSKU", "Comment", "Total", "NonInventory"
+                ],
+            "nest2_fields": ["ProductID", "SKU", "Name", "Quantity", "Price", "Discount", "Tax", "TaxRule", "SupplierSKU", "Comment", "Total", "NonInventory"]      
+        },
+        {
+            "nest": "PutAway",
+            "nest2": "Lines",
+            "table": "PurchaseStockReceived",
+            "fields": [
+                "ID", "TaskID", "InvoicingAndReceivingNumber", "Status", "Date", "Quantity", "ProductID", "SKU", "Name", "Location", "LocationID", "Received", "BatchSN", 
+                "SupplierSKU", "ExpiryDate", "CardID"
+                ],
+            "nest2_fields": ["Date", "Quantity", "ProductID", "SKU", "Name", "Location", "LocationID", "Received", "BatchSN", "SupplierSKU", "ExpiryDate", "CardID"],
+            "date_fields": ["Date", "ExpiryDate"]       
+        },
+        {
+            "nest": "Invoice",
+            "nest2": "Lines",
+            "table": "PurchaseInvoices",
+            "fields": [
+                "ID", "TaskID", "InvoicingAndReceivingNumber", "InvoiceDate", "InvoiceDueDate", "InvoiceNumber", "Status", "CurrencyRate", "ProductID", "SKU", "Name", 
+                "Quantity", "Price", "Discount", "Tax", "TaxRule", "Account", "Comment", "Total", "NonInventory"
+                ],
+            "nest2_fields": ["ProductID", "SKU", "Name", "Quantity", "Price", "Discount", "Tax", "TaxRule", "Account", "Comment", "Total", "NonInventory"],
+            "date_fields": ["InvoiceDate", "InvoiceDueDate"]
+        },
+        {
+            "nest": "Attachments",
+            "table": "PurchaseAttachments",
+            "fields": [
+                "ID", "AttachmentID", "ContentType", "FileName", "DownloadUrl"
+                ]     
+        },
+        {
+            "nest": "InventoryMovements",
+            "table": "PurchaseInventoryMovements",
+            "fields": [
+                "ID", "TaskID", "ProductID", "Date", "COGS"
+                ],
+            "date_fields": ["Date"]    
+        }
+    ]
+    },
+    {
+    "endpoint": "advanced-purchase/creditnote", 
+    "endpoint_id": "purchaseCreditNoteList",
+    "list_field": "PurchaseList",
+    "params": {"UpdatedSince": "__DATE__"},
+    "params_record": {"CombineAdditionalCharges": "true"},
+    "list_id": "ID",
+    "id_field": "PurchaseID",
+    "nested": [
+        {
+            "nest": "CreditNotes",
+            "nest2": "Lines",
+            "table": "PurchaseCreditNotes",
+            "fields": [
+                "PurchaseID", "TaskID", "CreditNoteNumber", "CreditNoteInvoiceNumber", "CreditNoteDate", "Status", "CurrencyRate", "ProductID", "SKU", "Name", "Quantity", "Price",
+                "Discount", "Tax", "TaxRule", "Account", "Comment", "Total"
+                ],
+            "nest2_fields": ["ProductID", "SKU", "Name", "Quantity", "Price", "Discount", "Tax", "TaxRule", "Account", "Comment", "Total"],
+            "date_fields": ["CreditNoteDate"]       
+        },
+        {
+            "nest": "CreditNotes",
+            "nest2": "Unstock",
+            "table": "PurchaseUnstock",
+            "fields": [
+                "PurchaseID", "TaskID", "CardID", "Date", "Quantity", "ProductID", "SKU", "Name", "Location", "BatchSN", "ExpiryDate"
+                ],
+            "nest2_fields": ["CardID", "Date", "Quantity", "ProductID", "SKU", "Name", "Location", "BatchSN", "ExpiryDate"],
+            "date_fields": ["Date", "ExpiryDate"]       
+        }
+    ]
+    },
+    {
+    "endpoint": "finishedGoods",
+    "endpoint_id": "finishedGoodsList",
+    "list_field": "FinishedGoods",
+    "list_id": "TaskID",
+    "id_field": "TaskID",
+    "list_date": "Date",
+    "fom_date": true,
+    "nested": [
+        {
+            "nest": "OrderLines",
+            "table": "FinishedGoodsOrderLines",
+            "fields": [
+                "TaskID", "ProductID", "ProductCode", "Name", "ExpenseAccount", "Quantity", "Unit", "WastagePercent", "WastageQuantity", "TotalQuantity", "TotalCost"
+                ]     
+        }
+    ]
+    } 
+]
